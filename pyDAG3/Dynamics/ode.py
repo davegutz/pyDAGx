@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 """ode.py    Ordinary differential equation tools
 02-Dec-2007  DA Gutz  Created
-
 """
 
 

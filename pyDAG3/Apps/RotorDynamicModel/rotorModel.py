@@ -228,16 +228,16 @@ class SimpleThreeEngineRotor:
                 curves.token(0, 6) == 'HPTOT_T' and
                 curves.token(0, 7) == 'HPMR_T' and
                 curves.token(0, 8) == 'HPTR_T'):
-            print curves.Line(0)
-            print 'token1=', curves.token(0, 1)
-            print 'token2=', curves.token(0, 2)
-            print 'token3=', curves.token(0, 3)
-            print 'token4=', curves.token(0, 4)
-            print 'token5=', curves.token(0, 5)
-            print 'token6=', curves.token(0, 6)
-            print 'token7=', curves.token(0, 7)
-            print 'token8=', curves.token(0, 8)
-            print 'Error(load_curves): bad header'
+            print(curves.Line(0))
+            print('token1=', curves.token(0, 1))
+            print('token2=', curves.token(0, 2))
+            print('token3=', curves.token(0, 3))
+            print('token4=', curves.token(0, 4))
+            print('token5=', curves.token(0, 5))
+            print('token6=', curves.token(0, 6))
+            print('token7=', curves.token(0, 7))
+            print('token8=', curves.token(0, 8))
+            print('Error(load_curves): bad header')
             return -1
         n_l = curves.numLines
         d_alt = 0
@@ -289,13 +289,13 @@ class SimpleThreeEngineRotor:
             # hptr  += [float(curves.token(i, 6)) - float(curves.token(i, 7)) ]
             hptr += [float(curves.token(i, 8))]
         if True:
-            print 'alt_t=', self.alt_t
-            print 'vknot_t=', self.vknot_t
-            print 'oatf_t=', self.oatf_t
-            print 'gvw_t=', self.gvw_t
-            print 'clp_t=', self.clp_t
-            print 'n_l=', n_l
-            print 'd_alt=', d_alt, 'n_vknot=', n_vknot, 'n_oatf=', n_oatf, 'n_gvw=', n_gvw, 'n_clp=', n_clp
+            print('alt_t=', self.alt_t)
+            print('vknot_t=', self.vknot_t)
+            print('oatf_t=', self.oatf_t)
+            print('gvw_t=', self.gvw_t)
+            print('clp_t=', self.clp_t)
+            print('n_l=', n_l)
+            print('d_alt=', d_alt, 'n_vknot=', n_vknot, 'n_oatf=', n_oatf, 'n_gvw=', n_gvw, 'n_clp=', n_clp)
         hptot_t = []
         hpmr_t = []
         hptr_t = []
@@ -487,7 +487,7 @@ class SimpleThreeEngineRotor:
         self.yp = [x for x in self.y]
 
     def __repr__(self):
-        """Print result"""
+        """print result"""
         if 1 == self.count:
             cout = 'time, alt, vknot, gvw, dynang, n_mr, n_tr, nt, n1, n2, n3, qmr, qtr, q1, q2, q3, qgas1, qgas2,' + \
                    'qgas3, qtotload, qmrload, qtrload\n'
@@ -523,7 +523,7 @@ def main():
     r_m = rotorModel.SimpleThreeEngineRotor(d_time)
 
     if r_m.load_curves() == -1:
-        print 'failed to load rotorCurves'
+        print('failed to load rotorCurves')
         return -1
 
     r_m.write_curves()
@@ -572,7 +572,7 @@ def main():
             break
         i += 1
 
-    print 'time=', time, 'vknot=', vknot, 'alt=', alt, 'pcnr=', pcnr, 'gvw=', gvw, 'clp=', zdynang
+    print('time=', time, 'vknot=', vknot, 'alt=', alt, 'pcnr=', pcnr, 'gvw=', gvw, 'clp=', zdynang)
 
 
 if __name__ == '__main__':
