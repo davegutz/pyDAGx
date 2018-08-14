@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os
 import fnmatch
 import subprocess
@@ -38,7 +38,7 @@ parser.add_option('-f', '--force', action='store_true',
 (options, args) = parser.parse_args()
 force = options.force
 if not map_dir:
-    print "No map.inp files found in current directory"
+    print("No map.inp files found in current directory")
 else:
     if force:
         map_list = map_dir
@@ -63,16 +63,16 @@ else:
             try:
                 tblI_mtime = os.stat(tblI).st_mtime
                 if tblI_mtime > os.stat(mapI).st_mtime:
-                    print tblI + ": conversion success"
+                    print(tblI + ": conversion success")
                 else:
-                    print tblI + ": conversion failed, check error messages"
+                    print(tblI + ": conversion failed, check error messages")
             except OSError:
-                print tblI + ": not found, check error messages"
+                print(tblI + ": not found, check error messages")
     else:
-        print "All map.inp files up to date, use force option to remake all"
+        print("All map.inp files up to date, use force option to remake all")
 
 if not ins_dir:
-    print "No ins.inp files found in current directory"
+    print("No ins.inp files found in current directory")
 else:
     if force:
         ins_list = ins_dir
@@ -98,10 +98,10 @@ else:
             try:
                 adjI_mtime = os.stat(adjI).st_mtime
                 if adjI_mtime > os.stat(insI).st_mtime:
-                    print adjI + ": conversion success"
+                    print(adjI + ": conversion success")
                 else:
-                    print adjI + ": conversion failed, check error messages"
+                    print(adjI + ": conversion failed, check error messages")
             except OSError:
-                print adjI + ": not found, check error messages"
+                print(adjI + ": not found, check error messages")
     else:
-        print "All ins.inp files up to date, use force option to remake all"
+        print("All ins.inp files up to date, use force option to remake all")

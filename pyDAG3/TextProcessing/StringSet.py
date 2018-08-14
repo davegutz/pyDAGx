@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 r"""StringSet:  string tokenizer class
 
 Tests:
 
->>> import StringSet
+>>> from pyDAG3.TextProcessing import StringSet
 >>> SS=StringSet.StringSet
 
 >>> testStrSet = SS("Mary had a little lamb; it's was white as snow.")
@@ -29,7 +29,7 @@ Replacing:
 >>> print(testStrSet)
 <000>|<001>Mary had a little lamb|;<002> it|'<003>s was black as snow|.<004>|
 >>> otherStrSet.tokenize(".")
->>> otherStrSet.gsubDelims(".", "!")
+>>> otherStrSet.glob_sub_delims(".", "!")
 1
 >>> print(otherStrSet)
 <000>|<001>Mary had a little lamb; it's was white as snow|!<002>|
@@ -86,13 +86,14 @@ Token details:
 
 import re
 
+
 class StringSet:
     """Create string sets from lines for easy file text manipulation"""
 
     def __eq__(self, other):
         """== special class method"""
         if isinstance(other, StringSet):
-            if      other.str == self.str and \
+            if other.str == self.str and \
                     other.size == self.size and \
                     other.sized == self.sized and \
                     other.tokenized == self.tokenized and \
@@ -105,8 +106,8 @@ class StringSet:
             result = False
         return result
 
-    def __init__(self, srcStr=None, delimiters=None):
-        self.str = srcStr
+    def __init__(self, source_str=None, delimiters=None):
+        self.str = source_str
         self.tokens = []
         self.size = 0
         self.delims = []
@@ -128,7 +129,7 @@ class StringSet:
     def __ne__(self, other):
         """!= special class method"""
         if isinstance(other, StringSet):
-            if      other.str != self.str or \
+            if other.str != self.str or \
                     other.size != self.size or \
                     other.sized != self.sized or \
                     other.tokenized != self.tokenized or \
@@ -148,18 +149,18 @@ class StringSet:
                 cout = '<000> %(d0)s' % {'d0': self.delims[0]}
             else:
                 cout = ''
-            slist = ['<%(i)03d>%(ti)s|%(di)s' \
-                         % {'i':i, 'di':self.delims[i],'ti':self.tokens[i]} \
-                         for i in range(self.sized)]
+            slist = ['<%(i)03d>%(ti)s|%(di)s'
+                     % {'i': i, 'di': self.delims[i], 'ti': self.tokens[i]}
+                     for i in range(self.sized)]
             cout = cout.join(slist)
             if self.size and self.sized > self.size:
-                cout = cout.join('<%(ss1)03d>%(dss1)s' \
-                         % {'ss1':self.sized-1, \
-                               'dss1': self.delims[self.sized-1]})
+                cout = cout.join('<%(ss1)03d>%(dss1)s'
+                                 % {'ss1': self.sized - 1,
+                                    'dss1': self.delims[self.sized - 1]})
         else:
-            slist = ['<%(i)03d>%(ti)s' \
-                         % {'i':i, 'ti':self.tokens[i]} \
-                         for i in range(self.size)]
+            slist = ['<%(i)03d>%(ti)s'
+                     % {'i': i, 'ti': self.tokens[i]}
+                     for i in range(self.size)]
             cout = ''.join(slist)
         return cout
 
@@ -169,12 +170,11 @@ class StringSet:
         if target != replacement:
             for i in range(self.size):
                 changed += self.tokens[i].count(target)
-                self.tokens[i] = self.tokens[i].replace(target, \
-                                                      replacement)
+                self.tokens[i] = self.tokens[i].replace(target, replacement)
                 changed -= self.tokens[i].count(target)
         return changed
 
-    def gsubDelims(self, target, replacement):
+    def glob_sub_delims(self, target, replacement):
         """Global delimiter replace, return number of replacements"""
         changed = 0
         if target != replacement:
@@ -188,25 +188,25 @@ class StringSet:
         """Reconstruct the tokenized version and return it"""
         if self.sized:
             if not self.size:
-                cout = '%(d0)s'% {'d0': self.delims[0]}
+                cout = '%(d0)s' % {'d0': self.delims[0]}
             else:
                 cout = ''
-            slist = ['%(ti)s%(di)s' \
-                         % {'di':self.delims[i], 'ti':self.tokens[i]} \
-                         for i in range(self.sized)]
+            slist = ['%(ti)s%(di)s'
+                     % {'di': self.delims[i], 'ti': self.tokens[i]}
+                     for i in range(self.sized)]
             cout = cout.join(slist)
             if self.size and self.sized > self.size:
-                cout = cout.join('%(dlast)s' \
-                                % {'dlast': self.delims[self.sized-1]})
+                cout = cout.join('%(dlast)s'
+                                 % {'dlast': self.delims[self.sized - 1]})
         else:
-            slist = ['%(ti)s ' % {'ti':self.tokens[i]} \
-                         for i in range(self.size)]
+            slist = ['%(ti)s ' % {'ti': self.tokens[i]}
+                     for i in range(self.size)]
             cout = "".join(slist)
         return cout
 
-    def shortenDelim(self, i):
+    def shorten_delim(self, i):
         """Shorten delimiter by one character at end"""
-        self.delims[i] = self.delims[i][:len(self.delims[i])-1]
+        self.delims[i] = self.delims[i][:len(self.delims[i]) - 1]
 
     def token(self, i, verbose=True):
         """Use __getitem__ instead"""
@@ -218,7 +218,7 @@ class StringSet:
         """Return an element"""
         return self.tokens[i]
 
-    def tokenize(self, delimiters, saveDelims=True):
+    def tokenize(self, delimiters, save_delims=True):
         """Find tokens of self.str separated by one or more delimiters;
         save tokens and delimiters"""
         # Initialize
@@ -231,25 +231,28 @@ class StringSet:
             self.tokenized = 0
         if not self.str:
             return
-        regEx = re.compile("[" + re.escape(delimiters) + "]*")
-        self.tokens = regEx.split(self.str)
+        reg_exp = re.compile("[" + re.escape(delimiters) + "]*")
+        self.tokens = reg_exp.split(self.str)
+        self.tokens = self.str.split()
         self.tokenized = 1
-        if saveDelims:
+        if save_delims:
             if self.tokens[0] == '':
                 self.delims = []
             else:
                 self.delims = ['']
-            rawDelims = regEx.findall(self.str)
-            for strg in rawDelims:
+            raw_delims = reg_exp.findall(self.str)
+            for strg in raw_delims:
                 if strg:
                     self.delims.append(strg)
-            if rawDelims[0] == '':
-                self.tokens.insert(0,'')
+            if raw_delims[0] == '':
+                self.tokens.insert(0, '')
         self.size = len(self.tokens)
         while len(self.delims) < self.size:
             self.delims.append('')
         self.sized = len(self.delims)
 
+
 if __name__ == '__main__':
     import doctest
+
     doctest.testmod(verbose=True)

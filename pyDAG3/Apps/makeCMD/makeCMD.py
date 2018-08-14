@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # import cProfile
 import getopt
 import datetime
@@ -53,7 +53,7 @@ Options:
     -v, --SW_Version    <e.g. "v0.00">
         Use this software version string
 Tests:
->>>makeCMD.py -d 0
+>>> makeCMD.py -d 0
 """
 """
 Rev        Author        Date    Description
@@ -109,9 +109,9 @@ class InputError(Error):
 
 def usage(code, msg=''):
     """Usage description"""
-    print >> sys.stderr, __doc__
+    print(sys.stderr, __doc__)
     if msg:
-        print >> sys.stderr, msg
+        print(sys.stderr, msg)
     sys.exit(code)
 
 
@@ -178,7 +178,7 @@ def replace_str_in_file(s_text, r_text, index_file):
     inf = open(index_file)
     out_file = open('.temp', 'w')
     count = 0
-    for s in inf.xreadlines():
+    for s in inf.readlines():
         count += s.count(s_text)
         out_file.write(s.replace(s_text, r_text))
     inf.close()
@@ -192,9 +192,9 @@ def cat(file1, file2, out_file):
     input1 = open(file1)
     input2 = open(file2)
     out_file = open(out_file, 'w')
-    for s in input1.xreadlines():
+    for s in input1.readlines():
         out_file.write(s)
-    for s in input2.xreadlines():
+    for s in input2.readlines():
         out_file.write(s)
     input1.close()
     input2.close()
@@ -205,7 +205,7 @@ def copy(file1, out_file):
     """Copy file to , return success as 0"""
     input1 = open(file1)
     out_file = open(out_file, 'w')
-    for s in input1.xreadlines():
+    for s in input1.readlines():
         out_file.write(s)
     input1.close()
     out_file.close()
@@ -342,8 +342,8 @@ def make_test(test_sars):
                 if not perl_error:
                     target_str = "v%(VE)s" % {'VE': VERN}
                     replace_str = "v%(VE)s_%(RT)s" % {'VE': VERN, 'RT': root}
-                    out_file = PERL_OUT.replace(target_str, replace_str).replace('scr',
-                                                                                 "_%(OTY)s_" % {'OTY': other_type})
+                    out_file = PERL_OUT.replace(target_str,
+                                                replace_str).replace('scr', "_%(OTY)s_" % {'OTY': other_type})
                     replace_str_in_file(PERL_OUT, out_file, PERL_OUT)
                     shutil.move(PERL_OUT, out_file)
                     if USING_FML00:
@@ -364,15 +364,15 @@ def list_shm(shm_file):
     shm_in_file = InFile(shm_file)
     shm_in_file.load()
     shm_in_file.gsub('#include', 'INCLUDE')
-    shm_in_file.stripComments('#')
-    shm_in_file.stripComments('%')
-    shm_in_file.stripComments('!')
-    shm_in_file.stripBlankLines()
+    shm_in_file.strip_comments('#')
+    shm_in_file.strip_comments('%')
+    shm_in_file.strip_comments('!')
+    shm_in_file.strip_blank_lines()
     shm_in_file.tokenize('. \r\n')
     raw_list = []
     full_list = []
     shm_list = []
-    for i in range(shm_in_file.numLines):
+    for i in range(shm_in_file.num_lines):
         # Added ability to recursively #INCLUDE additional shopmods (.shm) lists
         if shm_in_file.token(i, 1).startswith('INCLUDE'):
             include_shm_name = shm_in_file.token(i, 2) + '.shm'
@@ -380,7 +380,8 @@ def list_shm(shm_file):
             include_shm_file = os.path.join(os.getcwd(), include_shm_name)
             if os.path.isfile(include_shm_file):
                 # Recursive call to list_shm
-                [recursive_list, recursive_full_list, recursive_shm_list] = list_shm(include_shm_file)
+                # [recursive_list, recursive_full_list, recursive_shm_list] = list_shm(include_shm_file)
+                [recursive_full_list, recursive_shm_list] = list_shm(include_shm_file)
                 full_list = full_list + recursive_full_list
                 shm_list = shm_list + recursive_shm_list
         #            pdb.set_trace
@@ -392,12 +393,13 @@ def list_shm(shm_file):
                 full_list.append(filename)
             else:
                 print("Could not find " + os.path.basename(filename))
-    # cull repeats
-    clean_list = []
-    for i in range(len(raw_list)):
-        if not clean_list.__contains__(raw_list[i]):
-            clean_list.append(raw_list[i])
-    return clean_list, full_list, shm_list
+    # # cull repeats
+    # clean_list = []
+    # for i in range(len(raw_list)):
+    #     if not clean_list.__contains__(raw_list[i]):
+    #         clean_list.append(raw_list[i])
+    # return clean_list, full_list, shm_list
+    return full_list, shm_list
 
 
 def make_shm_folder(print_out_folder, location_list):
@@ -418,18 +420,18 @@ def make_shm_folder(print_out_folder, location_list):
             adj_in_file = InFile(check_file)
             adj_in_file.load()
             adj_in_file.tokenize(' \n\t')
-            for i in range(adj_in_file.numLines):
-                if adj_in_file.Line(i).startswith('!') or adj_in_file.Line(i).startswith('#')\
-                        or adj_in_file.Line(i).startswith('\n'):
-                    out_file.write(adj_in_file.Line(i))
+            for i in range(adj_in_file.num_lines):
+                if adj_in_file.line(i).startswith('!') or adj_in_file.line(i).startswith('#')\
+                        or adj_in_file.line(i).startswith('\n'):
+                    out_file.write(adj_in_file.line(i))
                 else:  # if len(adj_in_file.LineS(i)) == 4:
                     name = adj_in_file.token(i, 1)
                     if adj_list.count(name) == 0:
                         adj_list.append(name)
                         adj_sar_dict[name] = os.path.basename(check_file)
-                        out_file.write(adj_in_file.Line(i))
+                        out_file.write(adj_in_file.line(i))
                     else:
-                        out_file.write(' '.join(['!obsolete: overwritten by', adj_sar_dict[name], adj_in_file.Line(i)]))
+                        out_file.write(' '.join(['!obsolete: overwritten by', adj_sar_dict[name], adj_in_file.line(i)]))
             out_file.close()
         elif check_file.count('.tbl'):
             out_file_name = os.path.join(print_out_folder, os.path.basename(check_file))
@@ -438,29 +440,29 @@ def make_shm_folder(print_out_folder, location_list):
             tbl_in_file.load()
             tbl_in_file.tokenize(' \n\t\',')
             commenting = False
-            for i in range(tbl_in_file.numLines):
-                if tbl_in_file.Line(i).startswith('!'):
-                    out_file.write(tbl_in_file.Line(i))
+            for i in range(tbl_in_file.num_lines):
+                if tbl_in_file.line(i).startswith('!'):
+                    out_file.write(tbl_in_file.line(i))
                 else:
-                    if tbl_in_file.Line(i).count('#ADJUSTABLE'):
+                    if tbl_in_file.line(i).count('#ADJUSTABLE'):
                         continue
-                    if tbl_in_file.Line(i).count('$INPUT'):
+                    if tbl_in_file.line(i).count('$INPUT'):
                         name = tbl_in_file.token(i, 3)
                         if tbl_list.count(name) == 0:
                             tbl_list.append(name)
                             tbl_sar_dict[name] = os.path.basename(check_file)
                             commenting = False
-                            out_file.write(tbl_in_file.Line(i - 1))
-                            out_file.write(tbl_in_file.Line(i))
+                            out_file.write(tbl_in_file.line(i - 1))
+                            out_file.write(tbl_in_file.line(i))
                         else:
                             commenting = True
-                            out_file.write(' '.join(['!obsolete:', tbl_in_file.Line(i - 1)]))
+                            out_file.write(' '.join(['!obsolete:', tbl_in_file.line(i - 1)]))
                             out_file.write(' '.join(['!obsolete: overwritten by', tbl_sar_dict[name],
-                                                     tbl_in_file.Line(i)]))
+                                                     tbl_in_file.line(i)]))
                     elif commenting:
-                        out_file.write(''.join(['!obsolete:', tbl_in_file.Line(i)]))
+                        out_file.write(''.join(['!obsolete:', tbl_in_file.line(i)]))
                     else:
-                        out_file.write(tbl_in_file.Line(i))
+                        out_file.write(tbl_in_file.line(i))
             out_file.close()
         elif check_file.count('.fml'):
             shutil.copy(check_file, os.path.join(print_out_folder, os.path.basename(check_file)))
@@ -634,9 +636,9 @@ def make_location_files(location_list, calculated_list, out_file, p_out_file):
             location_list_str += (i + " ")
         sar_2_trim_path = find_path('sar2trim')
         perl_path = find_path('perl')
-        #  print perl_path
-        #   print sar_2_trim_path
-        #  print os.getcwd()
+        #  print(perl_path
+        #   print(sar_2_trim_path
+        #  print(os.getcwd()
         #  pdb.set_trace()
         tester = " ".join([perl_path, sar_2_trim_path, '-d', '-p', PGM, '-v', VERN, location_list_str])
         perl_status = subprocess.Popen(tester, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -648,7 +650,7 @@ def make_location_files(location_list, calculated_list, out_file, p_out_file):
             print(sys.stderr, "Child was terminated:\n", err_list)
             print("failed", out_file, "continuing...\n")
             success = False
-            # print perl_error
+            # print(perl_error
 
         else:  # success
             if warn_list:
@@ -684,9 +686,9 @@ def update_as_files(p_out_file):
     print("Updating as.adj and as.tbl in " + p_out_file + " folder")
     # update_adj_arg = ['update_as_adj_win', '-n', '-f', p_out_file] + adj_change_list[:]
     # status_adj = subprocess.call(update_adj_arg)
-    # print "This is current: "+status_adj.poll()
+    # print("This is current: "+status_adj.poll()
     # except OSError:
-    #    print "Unable to update as.adj"
+    #    print("Unable to update as.adj"
     # try:
     # update_tbl_args = ['update_as_tbl_win', '-n', '-f', p_out_file] + tbl_change_list[:]
     # status_tbl = subprocess.call(update_tbl_args)

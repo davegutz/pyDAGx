@@ -32,7 +32,7 @@ def usage(msg=''):
     code = sys.stderr
     print(code, __doc__)
     if msg:
-        print( code, msg)
+        print(code, msg)
     sys.exit(code)
 
 

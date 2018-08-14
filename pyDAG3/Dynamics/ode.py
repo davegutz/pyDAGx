@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """ode.py    Ordinary differential equation tools
 02-Dec-2007  DA Gutz  Created
 """

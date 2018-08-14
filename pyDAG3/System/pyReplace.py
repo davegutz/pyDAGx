@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Replaces strings in file lists.
 Normally call with target and replace strings then file listing.   Optionally
 provide a file with file list.
@@ -74,9 +74,9 @@ class InputError(Error):
 
 def usage(code, msg=''):
     """Usage description"""
-    print >> sys.stderr, __doc__
+    print(sys.stderr, __doc__)
     if msg:
-        print >> sys.stderr, msg
+        print(sys.stderr, msg)
     sys.exit(code)
 
 
@@ -100,25 +100,25 @@ def main(argv):
         usage(2, 'getopt error')
     for opt, arg in options:
         if opt in ('-h', '--help'):
-            print 'here'
+            print('here')
             usage(1)
         elif opt in ('-d', '--debug'):
             verbose = int(arg)
         elif opt in ('-l', '--list'):
             list_file = arg
         elif opt in ('-V', '--version'):
-            print 'pyReplace Version ', MY_VERSION, ' DA Gutz 8/31/2011 add file list option'
+            print('pyReplace Version ', MY_VERSION, ' DA Gutz 8/31/2011 add file list option')
             exit(0)
         else:
             usage(1, 'uknown')
 
     if len(remainder) != 3:
         if verbose:
-            print 'remainder=', remainder
+            print('remainder=', remainder)
         usage(1, 'number of string arguments supplied not 2')
 
     if verbose:
-        print 'list_file=', list_file
+        print('list_file=', list_file)
 
     if list_file:
         s_text = remainder[0]
@@ -132,15 +132,15 @@ def main(argv):
         arg_list = remainder
         del arg_list[0:2]
         if verbose:
-            print 'arg_list=', arg_list
+            print('arg_list=', arg_list)
 
     count = 0
     for file_name in arg_list:
         count_file = mS.replace_in_file(s_text, r_text, file_name)
         count += count_file
         if verbose:
-            print 'target=', s_text, ', replacement=', r_text, ', file=', file_name, ', count=', count_file
-    print count
+            print('target=', s_text, ', replacement=', r_text, ', file=', file_name, ', count=', count_file)
+    print(count)
 
 
 if __name__ == '__main__':

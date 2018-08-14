@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Generate stress test vectors from FTS file inputs
 Usage: genGorilla <base_profile.def> <monteCarloFile>
 Options:/
@@ -102,9 +102,9 @@ class InputError(Error):
 
 def usage(code, msg=''):
     """Usage description"""
-    print >> sys.stderr, __doc__
+    print(sys.stderr, __doc__)
     if msg:
-        print >> sys.stderr, msg
+        print(sys.stderr, msg)
     sys.exit(code)
 
 
@@ -116,24 +116,24 @@ def var_delay(input_, update, tf_delay, ft_delay, ic_val, state):
     if INITAS:
         output = ic_val
         if ic_val:
-            state = long(tf)
+            state = int(tf)
         else:
-            state = -long(ft + 1.0)
+            state = -int(ft + 1.0)
         return output, state
     if state >= 0:
         if input_:
-            state = long(tf)
+            state = int(tf)
         else:
             state = state - 1
             if state < 0:
-                state = -long(ft + 1.0)
+                state = -int(ft + 1.0)
     else:
         if input_:
             state = state + 1
             if state >= 0:
-                state = long(tf)
+                state = int(tf)
         else:
-            state = -long(ft + 1.0)
+            state = -int(ft + 1.0)
     output = state >= 0
     return output, state
 
@@ -305,31 +305,32 @@ class Base:
         self.curve = []
         # Find FTIME
         i = 0
-        while not (def_input.LineS(i)[1] == "$FTIME") and i < def_input.numLines:
+        while not (def_input.line_set(i)[1] == "$FTIME") and i < def_input.num_lines:
             i += 1
-        if i >= def_input.numLines:
+        if i >= def_input.num_lines:
             raise InputError('$FTIME line not found')
         else:
-            if len(def_input.LineS(i)) == 4:
-                self.f_time = float(def_input.LineS(i)[2])
+            if len(def_input.line_set(i)) == 4:
+                self.f_time = float(def_input.line_set(i)[2])
             else:
-                raise InputError('In %(line)s, 2 fields needed' % {'line': def_input.LineS(i).str})
+                raise InputError('In %(line)s, 2 fields needed' % {'line': def_input.line_set(i).str})
         # Find curves
         i = 0
         while True:
-            i = def_input.findStr("$INPUT", i)
-            if i >= def_input.numLines - 1:
+            i = def_input.find_string("$INPUT", i)
+            if i >= def_input.num_lines - 1:
                 break
-            curve_name = def_input.LineS(i)[2]
-            if len(def_input.LineS(i)) < 5:
+            curve_name = def_input.line_set(i)[2]
+            if len(def_input.line_set(i)) < 5:
                 raise InputError('Need type spec for input %(cn)s' % {'cn': curve_name})
-            curve_type = int(def_input.LineS(i)[3])
+            curve_type = int(def_input.line_set(i)[3])
             if self.num >= MAX_VARIABLE_ARRAY_SIZE:
-                raise InputError('%(cn)s is too long' % {'cn': curve_name})
-            self.curve.append(Parameter(def_input.LineS(i)[2], curve_type))
+                raise InputError('%(cn)s is too int' % {'cn': curve_name})
+            self.curve.append(Parameter(def_input.line_set(i)[2], curve_type))
             i += 1
-            while (def_input.LineS(i)[1][0].isdigit() or def_input.LineS(i)[1][0] == '.') and i < def_input.numLines:
-                self.curve[self.num].append_val(float(def_input.LineS(i)[1]), float(def_input.LineS(i)[2]), 1)
+            while (def_input.line_set(i)[1][0].isdigit() or def_input.line_set(i)[1][0] == '.')\
+                    and i < def_input.num_lines:
+                self.curve[self.num].append_val(float(def_input.line_set(i)[1]), float(def_input.line_set(i)[2]), 1)
                 i += 1
             self.num = len(self.curve)
 
@@ -352,21 +353,21 @@ class RandomAll:
         self.num = 0
         self.ranObj = []
         i = 0
-        while i < mtc_input.numLines:
+        while i < mtc_input.num_lines:
             # Range check
             if self.num > MAX_VARIABLE_ARRAY_SIZE:
                 raise InputError('Too many variables in %(cn)s' % {'cn': mtc_input.name()})
-            size = len(mtc_input.LineS(i))
-            tok002 = mtc_input.LineS(i)[2]
-            tok003 = mtc_input.LineS(i)[3]
+            size = len(mtc_input.line_set(i))
+            tok002 = mtc_input.line_set(i)[2]
+            tok003 = mtc_input.line_set(i)[3]
             if not (size == REGULAR_SIZE + 2 or
                     (size == SWITCH_SIZE + 2 and tok003 == 'SWITCH') or
                     (size == ONE_SWITCH_SIZE + 2 and tok003 == 'ONESWITCH') or
                     (size == CONSTANT_SIZE + 2 and tok002 == 'UNIFORMCONSTANT') or
                     (size == CONSTANT_SIZE + 2 and tok002 == 'NORMALCONSTANT')):
                 raise InputError('Improper format in %(pn)s at:%(line)s' % {'pn': mtc_input.program_name,
-                                                                            'line': mtc_input.LineS(i).str}, 1)
-            self.ranObj.append(RanDeltaVar(mtc_input.LineS(i)))
+                                                                            'line': mtc_input.line_set(i).str}, 1)
+            self.ranObj.append(RanDeltaVar(mtc_input.line_set(i)))
             i += 1
         self.num = len(self.ranObj)
 
@@ -793,13 +794,13 @@ def load_data(base_profile_data, base_profile_int_data, rand_profile_data):
     base_profile_int_data.upcase()
     rand_profile_data.upcase()
     # Strip comment lines from arrays
-    base_profile_data.stripComments("#")
-    base_profile_int_data.stripComments("#")
-    rand_profile_data.stripComments("#")
+    base_profile_data.strip_comments("#")
+    base_profile_int_data.strip_comments("#")
+    rand_profile_data.strip_comments("#")
     # Strip blank lines from arrays
-    base_profile_data.stripBlankLines()
-    base_profile_int_data.stripBlankLines()
-    rand_profile_data.stripBlankLines()
+    base_profile_data.strip_blank_lines()
+    base_profile_int_data.strip_blank_lines()
+    rand_profile_data.strip_blank_lines()
     # Tokenize, creating separate internal token array.
     base_profile_data.tokenize(" \t\n\r,")
     base_profile_int_data.tokenize(" \t\n\r,")
@@ -937,10 +938,10 @@ class Composite:
             int_name = root_name + '.int'
             scd_name = root_name + '.scd'
             crv_name = root_name + '.mtp'
-            def_f = file(def_name, 'w')
-            int_f = file(int_name, 'w')
-            scd_f = file(scd_name, 'w')
-            crv_f = file(crv_name, 'w')
+            def_f = open(def_name, 'w')
+            int_f = open(int_name, 'w')
+            scd_f = open(scd_name, 'w')
+            crv_f = open(crv_name, 'w')
             def_f.write(
                 '# %(def_name)s generated by genGorilla.py\n# from %(baseN)s and %(randN)s.\n# seed= %(seed)i\n' % {
                     'def_name': def_name, 'baseN': self.base.name, 'randN': self.rand.name,
@@ -980,18 +981,18 @@ class Composite:
             if MAX_DEFINE_CURVES < num_def_curves:
                 print('WARNING(genGorilla.py):  too many curves in', def_name, 'for autotv on rig')
             def_f.close()
-            print ('MESSAGE(genGorilla.py):  %(def_name)s generated from '
-                   '%(baseN)s and %(randN)s' %
-                   {'def_name': def_name, 'baseN': self.base.name, 'randN': self.rand.name})
+            print('MESSAGE(genGorilla.py):  %(def_name)s generated from '
+                  '%(baseN)s and %(randN)s' %
+                  {'def_name': def_name, 'baseN': self.base.name, 'randN': self.rand.name})
             int_f.close()
-            print ('MESSAGE(genGorilla.py):  %(int_name)s generated from %(baseN)s and %(randN)s' %
-                   {'int_name': int_name, 'baseN': self.base.name, 'randN': self.rand.name})
+            print('MESSAGE(genGorilla.py):  %(int_name)s generated from %(baseN)s and %(randN)s' %
+                  {'int_name': int_name, 'baseN': self.base.name, 'randN': self.rand.name})
             scd_f.close()
-            print ('MESSAGE(genGorilla.py):  %(scd_name)s generated from %(baseN)s and %(randN)s' %
-                   {'scd_name': int_name, 'baseN': self.base.name, 'randN': self.rand.name})
+            print('MESSAGE(genGorilla.py):  %(scd_name)s generated from %(baseN)s and %(randN)s' %
+                  {'scd_name': int_name, 'baseN': self.base.name, 'randN': self.rand.name})
             crv_f.close()
-            print ('MESSAGE(genGorilla.py):  %(crv_name)s generated from %(baseN)s and %(randN)s' %
-                   {'crv_name': int_name, 'baseN': self.base.name, 'randN': self.rand.name})
+            print('MESSAGE(genGorilla.py):  %(crv_name)s generated from %(baseN)s and %(randN)s' %
+                  {'crv_name': int_name, 'baseN': self.base.name, 'randN': self.rand.name})
         if not num_files:
             print('WARNING(genGorilla.py): no files generated')
 

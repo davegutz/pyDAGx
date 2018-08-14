@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/env python
 """
 Simple time model of GE38 rotor system
 2-Dec-2007    DA Gutz Created
@@ -74,6 +74,21 @@ class SimpleThreeEngineRotor:
         self.q1 = 0  # Engine 1 rotor spring preload, ft-lbf
         self.q2 = 0  # Engine 2 rotor spring preload, ft-lbf
         self.q3 = 0  # Engine 3 rotor spring preload, ft-lbf
+        self.qmrload = 0
+        self.qtrload = 0
+        self.qgas1 = 0
+        self.qgas2 = 0
+        self.qgas3 = 0
+        self.qtotload = 0
+        self.d_nmr = 0
+        self.hptot = 0
+        self.hpmr = 0
+        self.hptr = 0
+        self.alt = 0
+        self.vknot = 0
+        self.oatf = 0
+        self.gvw = 0
+        self.dynang = 0
 
         # Solver setup
         nx = self.nomnp * self.sn_max  # Max speed limit
@@ -121,8 +136,9 @@ class SimpleThreeEngineRotor:
         self.qgas3 = qgas3
         self.qtotload = qmrload + qtrload
 
-    def derivs(self, (n_mr, n_tr, nt, n1, n2, n3, qmr, qtr, q1, q2, q3)):
+    def derivs(self, past_values):
         """Generalized derivative calculator for the class"""
+        n_mr, n_tr, nt, n1, n2, n3, qmr, qtr, q1, q2, q3 = past_values
         d_nmr = (-self.qmrload + qmr - (n_mr - nt) * self.dlagm - self.damcoef * self.qmrload / max(n_mr, 1) * (
                     n_mr - self.nomnp)) / self.jmr
         self.d_nmr = d_nmr
@@ -147,7 +163,7 @@ class SimpleThreeEngineRotor:
 
     def write_curves(self):
         """Laboriously write the rotor load model"""
-        curve_file = file('rotorModel.map', 'wb')
+        curve_file = open('rotorModel.map', 'wb')
         d_alt = len(self.alt_t)
         n_vknot = len(self.vknot_t)
         n_oatf = len(self.oatf_t)
@@ -219,7 +235,7 @@ class SimpleThreeEngineRotor:
         """Laboriously import the rotor load model"""
         curves = InFile('rotorCurves.txt')
         curves.load()
-        curves.tokenize(' \n\r')
+        curves.tokenize('\n\r')
         if not (curves.token(0, 1) == 'ALT' and
                 curves.token(0, 2) == 'VKNOT' and
                 curves.token(0, 3) == 'OATF' and
@@ -228,7 +244,7 @@ class SimpleThreeEngineRotor:
                 curves.token(0, 6) == 'HPTOT_T' and
                 curves.token(0, 7) == 'HPMR_T' and
                 curves.token(0, 8) == 'HPTR_T'):
-            print(curves.Line(0))
+            print(curves.line(0))
             print('token1=', curves.token(0, 1))
             print('token2=', curves.token(0, 2))
             print('token3=', curves.token(0, 3))
@@ -239,7 +255,7 @@ class SimpleThreeEngineRotor:
             print('token8=', curves.token(0, 8))
             print('Error(load_curves): bad header')
             return -1
-        n_l = curves.numLines
+        n_l = curves.num_lines
         d_alt = 0
         for i in range(1, n_l):
             alt = float(curves.token(i, 1))
@@ -531,7 +547,7 @@ def main():
     # Executive initialization
     nomnp = r_m.nomnp
     i = 0
-    results_file = file('rotorModel.csv', 'wb')
+    results_file = open('rotorModel.csv', 'wb')
 
     # Rotor initialization
     (qtotload, qmrload, qtrload) = r_m.load_lookup(alt, vknot, oatf, gvw, zdynang)

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """"Various system utilities
 
 >>> import mySystem as mS
@@ -13,11 +13,11 @@ Time stamp
 
 Sorted reverse time
 >>> mS.lslrt('tests')
-['MANIFEST.in', 'mySystem.dic', 'pyDAG3.dic', '.temp']
+['MANIFEST.in', 'mySystem.dic', 'pyDAG.dic', '.temp']
 
 Sorted alphabetically
 >>> mS.lslrt('tests')
-['MANIFEST.in', 'mySystem.dic', 'pyDAG3.dic', '.temp']
+['MANIFEST.in', 'mySystem.dic', 'pyDAG.dic', '.temp']
 
 >>> mS.replace_in_file('lslrt', 'lslrt_replaced', 'tests/.temp')
 1
@@ -63,9 +63,9 @@ class InputError(Error):
 
 def usage(code, msg=''):
     """Usage description"""
-    print >> sys.stderr, __doc__
+    print(sys.stderr, __doc__)
     if msg:
-        print >> sys.stderr, msg
+        print(sys.stderr, msg)
     sys.exit(code)
 
 
@@ -112,7 +112,7 @@ def copy(file1, output_file):
     # inf1  = open(file1)
     # output  = open(output_file, 'w')
     # count = 0
-    # for s in inf1.xreadlines():
+    # for s in inf1.readline():
     #    count += 1
     #    output.write(s)
     # inf1.close()
@@ -158,7 +158,7 @@ def replace_in_file(s_text, r_text, input_file_name):
     input_file = open(input_file_name)
     output = open('.r_temp', 'w')
     count = 0
-    for s in input_file.xreadlines():
+    for s in input_file.readlines():
         count += s.count(s_text)
         output.write(s.replace(s_text, r_text))
     input_file.close()
@@ -176,10 +176,10 @@ def cat(file1, file2, output_file):
     input2 = open(file2)
     output = open(output_file, 'w')
     count = 0
-    for s in input1.xreadlines():
+    for s in input1.readlines():
         count += 1
         output.write(s)
-    for s in input2.xreadlines():
+    for s in input2.readlines():
         count += 1
         output.write(s)
     input1.close()

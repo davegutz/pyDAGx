@@ -1,6 +1,5 @@
-#!/usr/bin/env python
-import Tkinter as Tk
-import Tkconstants as Tkc
+#!/usr/bin/env python3
+import tkinter as tk
 
 """State:  GUI state machine class
     -d [level] / --debug [level]
@@ -30,7 +29,7 @@ class State:
         self.__depends = depends
         self.__state = state_boolean
         if s_type == 'checkbutton':
-            self.stateInt = Tk.IntVar()
+            self.stateInt = tk.IntVar()
             if state_boolean:
                 self.stateInt.set(0)
             else:
@@ -38,88 +37,88 @@ class State:
         self.__buttonName = button_name
         self.__callback = callback
         self.__desc = description
-        self.__widget = Tk.Button()
+        self.__widget = tk.Button()
 
     def flatten_butt(self):
         """Flatten the tk button"""
-        self.__widget['relief'] = Tkc.FLAT
+        self.__widget['relief'] = tk.constants.FLAT
 
     def flat(self):
         """Query if flat"""
         if self.__s_type == 'button' and self.__widget['relief'] == \
-                Tkc.FLAT:
+                tk.constants.FLAT:
             return True
         else:
             return False
 
     def raise_butt(self):
         """Raise the tk button"""
-        self.__widget['relief'] = Tkc.RAISED
+        self.__widget['relief'] = tk.constants.RAISED
 
     def raised(self):
         """Query if raised"""
         if self.__s_type == 'button' and self.__widget['relief'] == \
-                Tkc.RAISED:
+                tk.constants.RAISED:
             return True
         else:
             return False
 
     def groove_butt(self):
         """Groove the tk button"""
-        self.__widget['relief'] = Tkc.GROOVE
+        self.__widget['relief'] = tk.constants.GROOVE
 
     def grooved(self):
         """Query if grooved"""
         if self.__s_type == 'button' and self.__widget['relief'] == \
-                Tkc.GROOVE:
+                tk.constants.GROOVE:
             return True
         else:
             return False
 
     def ridge_butt(self):
         """Make button ridged"""
-        self.__widget['relief'] = Tkc.RIDGE
+        self.__widget['relief'] = tk.constants.RIDGE
 
     def ridged(self):
         """Query ridged"""
         if self.__s_type == 'button' and self.__widget['relief'] == \
-                Tkc.RIDGE:
+                tk.constants.RIDGE:
             return True
         else:
             return False
 
     def disable_butt(self):
         """Make button disabled"""
-        self.__widget['state'] = Tkc.DISABLED
+        self.__widget['state'] = tk.constants.DISABLED
 
     def disabled(self):
         """Query disabled"""
         if self.__s_type == 'button' and self.__widget['state'] == \
-                Tkc.DISABLED:
+                tk.constants.DISABLED:
             return True
         else:
             return False
 
     def enable_butt(self):
         """Make button enabled"""
-        self.__widget['state'] = Tkc.NORMAL
+        self.__widget['state'] = tk.constants.NORMAL
 
     def enabled(self):
         """Query enabled"""
         if self.__s_type == 'button' and self.__widget['state'] == \
-                Tkc.NORMAL:
+                tk.constants.NORMAL:
             return True
         else:
             return False
 
     def sink_butt(self):
         """Make button sunken"""
-        self.__widget['relief'] = Tkc.SUNKEN
+        self.__widget['relief'] = tk.constants.SUNKEN
 
     def sunken(self):
         """Query sunken"""
         if self.__s_type == 'button' and self.__widget['relief'] == \
-                Tkc.SUNKEN:
+                tk.constants.SUNKEN:
             return True
         else:
             return False
@@ -214,28 +213,27 @@ class StateMachine:
             for (key, state) in self.__stateD.items():
                 state_past = self.__stateD[key].permitted()
                 if self.__verbose > 4:
-                    print key, '=', self.__stateD[key].permitted(), '::',
+                    print(key, '=', self.__stateD[key].permitted(), '::',)
                 if len(state.depends()):
                     self.__stateD[key].permitted(True)
                 else:
                     self.__stateD[key].permitted(state_past)
                 for dep in state.depends():
                     if self.__verbose > 4:
-                        print dep, '=', \
-                            self.__stateD[dep].permitted(), ',',
+                        print(dep, '=', self.__stateD[dep].permitted(), ',',)
                     if not self.__stateD[dep].permitted():
                         self.__stateD[key].permitted(False)
                 if self.__verbose > 4:
-                    print '::', key, '=', self.__stateD[key].permitted()
+                    print('::', key, '=', self.__stateD[key].permitted())
                 if self.__verbose > -1:
                     if not state_past and self.__stateD[key].permitted():
-                        print 'set=', key
+                        print('set=', key)
                     if state_past and not self.__stateD[key].permitted():
-                        print 'unset=', key
+                        print('unset=', key)
             total = self.__totalize()
             count += 1
         if self.__verbose > -1:
-            print 'total=', self.__total, ' count=', count
+            print('total=', self.__total, ' count=', count)
         return self.__stateD.items()
 
     def __totalize(self):
@@ -246,7 +244,7 @@ class StateMachine:
             self.__total += state.permitted() * 2 ** i_state
             i_state += 1
             if self.__verbose > 0:
-                print key, '=', state.permitted(), ',',
+                print(key, '=', state.permitted(), ',',)
         return self.__total
 
 
@@ -260,9 +258,9 @@ def main(argv):
     # Initialize static variables.
     def usage(code, msg=''):
         """Usage description"""
-        print >> sys.stderr, __doc__
+        print(sys.stderr, __doc__)
         if msg:
-            print >> sys.stderr, msg
+            print(sys.stderr, msg)
         if code >= 0:
             sys.exit(code)
 
@@ -278,14 +276,14 @@ def main(argv):
         if opt in ('-d', '--debug'):
             verbose = int(arg)
         elif opt in ('-h', '--help'):
-            print usage(1)
+            print(usage(1))
         elif opt in ('-V', '--version'):
-            print 'State.py Version 1.0.  DA Gutz 8/26/10'
+            print('State.py Version 1.0.  DA Gutz 8/26/10')
             exit(0)
         else:
-            print usage(1)
+            print(usage(1))
     if len(remainder) > 0:
-        print usage(1)
+        print(usage(1))
 
     # gui
     class _MyUserInterfaceClass:
@@ -297,30 +295,30 @@ def main(argv):
             self.__stateMach = StateMachine(state_d, verbose)
 
             # Initialize main menu bar
-            self.__menu_bar = Tk.Menu(master)
-            self.__frame = Tk.Toplevel(relief='ridge',
+            self.__menu_bar = tk.Menu(master)
+            self.__frame = tk.Toplevel(relief='ridge',
                                        borderwidth=2,
                                        menu=self.__menu_bar)
             self.__frame.geometry(ar + xy)
             master.config(menu=self.__menu_bar)
-            file_menu = Tk.Menu(self.__menu_bar, tearoff=0)  # drop down
+            file_menu = tk.Menu(self.__menu_bar, tearoff=0)  # drop down
             self.__menu_bar.add_cascade(label='File', underline=0,
                                         menu=file_menu)
             master.withdraw()  # Suppress unwanted window
             # Initialize buttons in main window
-            b0 = Tk.Button(self.__frame, text='FILESYS',
+            b0 = tk.Button(self.__frame, text='FILESYS',
                            command=self.__sm_callback('FILESYS'),
-                           relief=Tkc.RAISED)
+                           relief=tk.constants.RAISED)
             b0.grid(row=self.__state_row('FILESYS'),
                     column=self.__state_col('FILESYS'))
-            b1 = Tk.Button(self.__frame, text='BASELINE',
+            b1 = tk.Button(self.__frame, text='BASELINE',
                            command=self.__sm_callback('BASELINE'),
-                           relief=Tkc.RAISED)
+                           relief=tk.constants.RAISED)
             b1.grid(row=self.__state_row('BASELINE'),
                     column=self.__state_col('BASELINE'))
-            b2 = Tk.Button(self.__frame, text='BUILDSAR',
+            b2 = tk.Button(self.__frame, text='BUILDSAR',
                            command=self.__sm_callback('BUILDSAR'),
-                           relief=Tkc.RAISED)
+                           relief=tk.constants.RAISED)
             b2.grid(row=self.__state_row('BUILDSAR'),
                     column=self.__state_col('BUILDSAR'))
 
@@ -342,17 +340,17 @@ def main(argv):
 
     def check_create_file_sys():
         """File system build callback"""
-        print 'FILESYS'
+        print('FILESYS')
         mu_ic.state_machine().update('FILESYS')
 
     def import_build_baseline():
         """Build Baseline callback"""
-        print 'BASELINE'
+        print('BASELINE')
         mu_ic.state_machine().update('BASELINE')
 
     def build_sar():
         """Build SAR callback"""
-        print 'build_sar'
+        print('build_sar')
         mu_ic.state_machine().update('BUILDSAR')
 
     # State dictionary
@@ -402,11 +400,11 @@ def main(argv):
               ]
 
     # load settings and make them global
-    root = Tk.Tk()
+    root = tk.Tk()
     root.title('State')
     root.withdraw()
 
-    root2 = Tk.Toplevel()
+    root2 = tk.Toplevel()
     mu_ic = _MyUserInterfaceClass(root2,  # Set up the main GUI 
                                   '400x200',  # Width & Height
                                   '+20+20',  # Initial X/Y screen loc
