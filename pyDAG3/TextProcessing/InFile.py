@@ -6,7 +6,7 @@ Tests:
 >>> tf = open('temp', 'wt')
 >>> text = "This is the first line.\n\nThis is the third line.\nThis is the fourth line.\nThis may be a line.\n"
 >>> tf.write(text)
-13
+94
 >>> tf.close()
 >>> infile=InFile('temp','asTemp')
 >>> infile.load()
@@ -38,43 +38,55 @@ asTemp (4 lines):
 0:This is the first line.
 1:This is the third line.
 2:This is the fourth line.
-3:This may a be line.
+3:This may be a line.
 <BLANKLINE>
+
 >>> infile.load_vars()
 16
+
 >>> infile.nVars
 16
+
 >>> infile.tokenize(";[]{}()!@#$%^&*-+_=`~/<>,.:'")
-12
+8
+
 >>> infile.line_set(1600)
-<000>|<001>This may be a third line|.<002>
+<000>This may be a line|.<001>
 |
+
 >>> infile.line(int(infile.num_lines/3))
 'This is the third line.\n'
+
 >>> infile.line_set(int(infile.num_lines/3))
-<000>|<001>This is the third line|.<002>
+<000>This is the third line|.<001>
 |
+
 >>> firstThird = infile.find_string('third')
 >>> infile.line(firstThird)
 'This is the third line.\n'
+
 >>> firstThird=infile.find_string('third', firstThird+1)
 >>> infile.line(firstThird)
 'This may be a line.\n'
->>> infile.token(firstThird, 1)
-'This may be a line line'
+
+>>> infile.token(firstThird, 0)
+'This may be a line'
+
 >>> infile.max_line_length()
-3
+2
+
 >>> infile.gsub('third', 'fourth', firstThird)
-1
+0
+
 >>> infile
 asTemp (4 lines):
-0:<000>|<001>This is the first line|.<002>
+0:<000>This is the first line|.<001>
 |
-1:<000>|<001>This is the third line|.<002>
+1:<000>This is the third line|.<001>
 |
-2:<000>|<001>This is the fourth line|.<002>
+2:<000>This is the fourth line|.<001>
 |
-3:<000>|<001>This may be a line|.<002>
+3:<000>This may be a line|.<001>
 |
 <BLANKLINE>
 
@@ -96,24 +108,52 @@ asTemp (4 lines):
 3:This may be a line.
 <BLANKLINE>
 
->>> infile.gsub('This is also', '#This is also')
+>>> infile.gsub('This may be', '#This may be')
 1
+
 >>> infile.strip_comments('#')
 1
+
+>>> infile
+asTemp (4 lines):
+0:THIS IS THE FIRST LINE.
+1:THIS IS THE THIRD LINE.
+2:THIS IS THE FOURTH LINE.
+3:
+<BLANKLINE>
+
 >>> infile.tokenize(";[]{}()!@#$%^&*-+_=`~/<>,.:'")
-9
+7
+
 >>> infile.add_line(1, 'This line was inserted, no line feed in input string')
 >>> infile.add_line(1, 'This line was inserted, line feed in input string\n')
+>>> infile
+asTemp (6 lines):
+0:<000>THIS IS THE FIRST LINE|.<001>
+|
+1:<000>THIS IS THE THIRD LINE|.<001>
+|
+2:<000>This line was inserted|,<001> line feed in input string
+|
+3:<000>This line was inserted|,<001> no line feed in input string
+|
+4:<000>THIS IS THE FOURTH LINE|.<001>
+|
+5:<000>
+|
+<BLANKLINE>
 >>> infile.sort()
 >>> infile
 asTemp (6 lines):
-0:1:THIS IS THE FIRST LINE.
+0:
+1:THIS IS THE FIRST LINE.
 2:THIS IS THE FOURTH LINE.
 3:THIS IS THE THIRD LINE.
 4:This line was inserted, line feed in input string
 5:This line was inserted, no line feed in input string
 <BLANKLINE>
 
+>>> infile.close_file()
 >>> import os
 >>> os.remove('temp')
 
@@ -194,13 +234,9 @@ class InFile:
         cout = '%(name)s (%(num_lines)d lines):\n' \
             % {'name': self.programName, 'num_lines': self.num_lines}
         if self.tokenized:
-            slist = ['%(i)d:%(line)s\n'
-                     % {'i': i, 'line': self.v_set[i]}
-                     for i in range(self.num_lines)]
+            slist = ['%(i)d:%(line)s\n' % {'i': i, 'line': self.v_set[i]} for i in range(self.num_lines)]
         else:
-            slist = ['%(i)d:%(line)s'
-                     % {'i': i, 'line': self.lines[i]}
-                     for i in range(self.num_lines)]
+            slist = ['%(i)d:%(line)s' % {'i': i, 'line': self.lines[i]} for i in range(self.num_lines)]
         cout += "".join(slist)
         return cout
 
@@ -309,7 +345,7 @@ class InFile:
         in_file_set = StringSet(self.inFile, "/.")
         if len(in_file_set) > 2:
             self.file_extension = in_file_set[len(in_file_set)-1]
-        self.file_root = in_file_set[1]
+        self.file_root = in_file_set[0]
         if self.file_extension == 'gz':
             import gzip
             self.f = gzip.open(self.inFile)
@@ -380,16 +416,7 @@ class InFile:
             if self.reconstructed:
                 raise InputError("", "reconstructed already")
         for i in range(self.num_lines):
-            # Dangling initial delimiter
-            if self.v_set[i].sized and not self.v_set[i].size:
-                self.lines[i] = self.v_set[i].delim(0)
-            else:
-                self.lines[i] = ""
-            # Some tokens exist
-            # print 'i=', i, 'v_set=', self.v_set[i], 'size=', self.v_set[i].size, 'sized=', self.v_set[i].sized
-            # print 'tokens=', self.v_set[i].tokens, '\ndelims=', self.v_set[i].delims, '\nstr=', self.v_set[i].str,
-            #  '\n delimiters', self.v_set[i].delimiters
-            self.lines[i] += self.v_set[i].reconstruct()
+            self.lines[i] = self.v_set[i].reconstruct()
         self.reconstructed = 1
         self.tokenized = 0
 
@@ -455,7 +482,11 @@ class InFile:
         for i in range(self.num_lines):
             if self.lines[i].find(comment_delim) > -1:
                 num_comment_str += 1
-                self.lines[i] = self.lines[i].split(comment_delim)[0]
+                if self.lines[i][-1] == '\n':
+                    last_char = '\n'
+                else:
+                    last_char = ''
+                self.lines[i] = self.lines[i].split(comment_delim)[0] + last_char
         return num_comment_str
 
     def token(self, i, j):
