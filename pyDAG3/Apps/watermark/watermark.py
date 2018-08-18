@@ -17,6 +17,8 @@ Opening water mark a_file watermarkKPEr.png ...
 Marking  Figure_1.jpg  and saving as  wFigure_1.jpg
 Done.
 
+>>> import os
+>>> os.remove('wFigure_1.jpg')
 """
 # import cProfile
 import getopt

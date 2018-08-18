@@ -3,7 +3,7 @@ r""" Input file module, parse and manipulate input files
 
 Tests:
 >>> from pyDAG3.TextProcessing.InFile import InFile
->>> tf = open('temp', 'wt')
+>>> tf = open('temp', 'w')
 >>> text = "This is the first line.\n\nThis is the third line.\nThis is the fourth line.\nThis may be a line.\n"
 >>> tf.write(text)
 94

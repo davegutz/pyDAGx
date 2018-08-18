@@ -163,7 +163,7 @@ class SimpleThreeEngineRotor:
 
     def write_curves(self):
         """Laboriously write the rotor load model"""
-        curve_file = open('rotorModel.map', 'wb')
+        curve_file = open('rotorModel.map', 'w')
         d_alt = len(self.alt_t)
         n_vknot = len(self.vknot_t)
         n_oatf = len(self.oatf_t)
@@ -235,24 +235,24 @@ class SimpleThreeEngineRotor:
         """Laboriously import the rotor load model"""
         curves = InFile('rotorCurves.txt')
         curves.load()
-        curves.tokenize('\n\r')
-        if not (curves.token(0, 1) == 'ALT' and
-                curves.token(0, 2) == 'VKNOT' and
-                curves.token(0, 3) == 'OATF' and
-                curves.token(0, 4) == 'GVW' and
-                curves.token(0, 5) == 'CLP' and
-                curves.token(0, 6) == 'HPTOT_T' and
-                curves.token(0, 7) == 'HPMR_T' and
-                curves.token(0, 8) == 'HPTR_T'):
+        curves.tokenize(' \n\r')
+        if not (curves.token(0, 0) == 'ALT' and
+                curves.token(0, 1) == 'VKNOT' and
+                curves.token(0, 2) == 'OATF' and
+                curves.token(0, 3) == 'GVW' and
+                curves.token(0, 4) == 'CLP' and
+                curves.token(0, 5) == 'HPTOT_T' and
+                curves.token(0, 6) == 'HPMR_T' and
+                curves.token(0, 7) == 'HPTR_T'):
             print(curves.line(0))
-            print('token1=', curves.token(0, 1))
-            print('token2=', curves.token(0, 2))
-            print('token3=', curves.token(0, 3))
-            print('token4=', curves.token(0, 4))
-            print('token5=', curves.token(0, 5))
-            print('token6=', curves.token(0, 6))
-            print('token7=', curves.token(0, 7))
-            print('token8=', curves.token(0, 8))
+            print('token1=', curves.token(0, 0))
+            print('token2=', curves.token(0, 1))
+            print('token3=', curves.token(0, 2))
+            print('token4=', curves.token(0, 3))
+            print('token5=', curves.token(0, 4))
+            print('token6=', curves.token(0, 5))
+            print('token7=', curves.token(0, 6))
+            print('token8=', curves.token(0, 7))
             print('Error(load_curves): bad header')
             return -1
         n_l = curves.num_lines
@@ -547,7 +547,7 @@ def main():
     # Executive initialization
     nomnp = r_m.nomnp
     i = 0
-    results_file = open('rotorModel.csv', 'wb')
+    results_file = open('rotorModel.csv', 'w')
 
     # Rotor initialization
     (qtotload, qmrload, qtrload) = r_m.load_lookup(alt, vknot, oatf, gvw, zdynang)

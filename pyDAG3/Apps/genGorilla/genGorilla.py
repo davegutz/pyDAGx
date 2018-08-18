@@ -305,13 +305,13 @@ class Base:
         self.curve = []
         # Find FTIME
         i = 0
-        while not (def_input.line_set(i)[1] == "$FTIME") and i < def_input.num_lines:
+        while not (def_input.line_set(i)[0] == "$FTIME") and i < def_input.num_lines:
             i += 1
         if i >= def_input.num_lines:
             raise InputError('$FTIME line not found')
         else:
-            if len(def_input.line_set(i)) == 4:
-                self.f_time = float(def_input.line_set(i)[2])
+            if len(def_input.line_set(i)) == 3:
+                self.f_time = float(def_input.line_set(i)[1])
             else:
                 raise InputError('In %(line)s, 2 fields needed' % {'line': def_input.line_set(i).str})
         # Find curves
@@ -320,10 +320,10 @@ class Base:
             i = def_input.find_string("$INPUT", i)
             if i >= def_input.num_lines - 1:
                 break
-            curve_name = def_input.line_set(i)[2]
-            if len(def_input.line_set(i)) < 5:
+            curve_name = def_input.line_set(i)[1]
+            if len(def_input.line_set(i)) < 4:
                 raise InputError('Need type spec for input %(cn)s' % {'cn': curve_name})
-            curve_type = int(def_input.line_set(i)[3])
+            curve_type = int(def_input.line_set(i)[2])
             if self.num >= MAX_VARIABLE_ARRAY_SIZE:
                 raise InputError('%(cn)s is too int' % {'cn': curve_name})
             self.curve.append(Parameter(def_input.line_set(i)[2], curve_type))

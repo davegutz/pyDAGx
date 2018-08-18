@@ -13,11 +13,11 @@ Time stamp
 
 Sorted reverse time
 >>> mS.lslrt('tests')
-['MANIFEST.in', 'mySystem.dic', 'pyDAG.dic', '.temp']
+['mySystem.dic', 'pyDAG.dic', 'MANIFEST.in', '.temp']
 
 Sorted alphabetically
 >>> mS.lslrt('tests')
-['MANIFEST.in', 'mySystem.dic', 'pyDAG.dic', '.temp']
+['mySystem.dic', 'pyDAG.dic', 'MANIFEST.in', '.temp']
 
 >>> mS.replace_in_file('lslrt', 'lslrt_replaced', 'tests/.temp')
 1

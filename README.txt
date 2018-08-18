@@ -56,18 +56,26 @@ uname=davegutz, pwd=Stevie18g
 Test
 pip install --index-url https://test.pypi.org/simple/ pyDAG3
 or for local copy
-pip install pyDAG3-1.4.1-py2-none-any.whl
+pip install pyDAG3-3.5.3-py3-none-any.whl
 
 
 Uninstall  ******use Window CMD for this********
 pip uninstall pyDAG3
 or
-python -m pip uninstall pyDAG3-1.4-py2-none-any.whl
-
-
+python -m pip uninstall pyDAG3-3.5.3-py3-none-any.whl
 
 
 Version number goes into setup.py
 
 python setup.py sdist --manifest-only
+
+Running scripts:
+Add PY to PATHEXT
+dos prompt   > pyReplace
+cygwin prompt$ python "`cygpath -w /cygdrive/c/Users/Dave/AppData/Local/Programs/Python/Python37/Scripts/pyReplace.py`"
+
+Running python in cygwin.  In windows, python is an attached process and uses pipes hence -i
+python -i
+or
+cygstart python
 

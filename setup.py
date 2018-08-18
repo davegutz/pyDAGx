@@ -2,11 +2,11 @@ import setuptools
 from distutils.core import setup
 
 setup(name='pyDAG3',
-      version='3.5.1',
+      version='3.5.3',
       author='Dave Gutz',
       author_email='davegutz@alum.mit.edu',
       url='http://www.google.com',
-      description='Dave Gutz Python 3 port',
+      description='First Release Dave Gutz Python 3 port (need to try Linux)',
       long_description=None,
       license=None,
       platforms='OS Independent',
@@ -71,5 +71,5 @@ setup(name='pyDAG3',
                'pyDAG3/System/pyReplace.py'],
       packages=['pyDAG3', 'pyDAG3.TextProcessing', 'pyDAG3.Dynamics', 'pyDAG3.Tables', 'pyDAG3.System',
                 'pyDAG3.Tkinter'],
-      install_requires=['Pillow']
+      install_requires=['Pillow', 'twine', 'wheel', 'pip', 'setuptools']
       )

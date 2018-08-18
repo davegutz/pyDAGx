@@ -38,47 +38,47 @@ Token details:
 >>> ss.str
 'class Error(Exception):\n'
 >>> ss
-<000>class Error|(<001>Exception|)<002>|:<003>
+<000>class Error|(<001>Exception|):<002>
 |
 >>> ss.size_tokens
-4
+3
 >>> ss.size_delimiters
-4
+3
 >>> ss.tokens
-['class Error', 'Exception', '', '\n']
+['class Error', 'Exception', '\n']
 >>> ss.delims
-['(', ')', ':', '']
+['(', '):', '']
 >>> ss.reconstruct()
 'class Error(Exception):\n'
 >>> ss =StringSet('[class Error(Exception):\n', ';[]{}()!@#$%^&*-+_=`~/<>,.:\'') 
 >>> ss.str
 '[class Error(Exception):\n'
 >>> ss
-<000>|[<001>class Error|(<002>Exception|)<003>|:<004>
+<000>|[<001>class Error|(<002>Exception|):<003>
 |
 >>> ss.size_tokens
-5
+4
 >>> ss.size_delimiters
-5
+4
 >>> ss.tokens
-['', 'class Error', 'Exception', '', '\n']
+['', 'class Error', 'Exception', '\n']
 >>> ss.delims
-['[', '(', ')', ':', '']
+['[', '(', '):', '']
 >>> ss.reconstruct()
 '[class Error(Exception):\n'
 >>> ss = StringSet('./rdg100Small.txt', "./")
 >>> ss.str
 './rdg100Small.txt'
 >>> ss
-<000>|.<001>|/<002>rdg100Small|.<003>txt|
+<000>|./<001>rdg100Small|.<002>txt|
 >>> ss.size_tokens
-4
+3
 >>> ss.size_delimiters
-4
+3
 >>> ss.tokens
-['', '', 'rdg100Small', 'txt']
+['', 'rdg100Small', 'txt']
 >>> ss.tokens
-['', '', 'rdg100Small', 'txt']
+['', 'rdg100Small', 'txt']
 >>> ss.reconstruct()
 './rdg100Small.txt'
 """
@@ -227,7 +227,7 @@ class StringSet:
             self.tokenized = 0
         if not self.str:
             return
-        reg_exp = re.compile("[" + re.escape(delimiters) + "]")
+        reg_exp = re.compile("[" + re.escape(delimiters) + "]+")
         self.tokens = reg_exp.split(self.str)
         self.tokenized = 1
         if save_delims:
