@@ -2,22 +2,32 @@
 """"Various system utilities
 
 >>> import mySystem as mS
+>>> import time
 >>> import os
 
 Copy file
 >>> mS.copy('mySystem.dic', 'tests/.temp')
 
 Time stamp
->>> mS.get_stamp('mySystem.dic')
-1533316964.1656606
+>>> mS.get_stamp('mySystem.dic') == os.path.getmtime('mySystem.dic')
+True
+
+Touch
+>>> mS.touch('tests/MANIFEST.in')
+>>> time.sleep(0.1)
+>>> mS.touch('tests/pyDAG.dic')
+>>> time.sleep(0.1)
+>>> mS.touch('tests/mySystem.dic')
+>>> time.sleep(0.1)
+>>> mS.touch('tests/.temp')
 
 Sorted reverse time
 >>> mS.lslrt('tests')
-['mySystem.dic', 'pyDAG.dic', 'MANIFEST.in', '.temp']
+['MANIFEST.in', 'pyDAG.dic', 'mySystem.dic', '.temp']
 
 Sorted alphabetically
->>> mS.lslrt('tests')
-['mySystem.dic', 'pyDAG.dic', 'MANIFEST.in', '.temp']
+>>> mS.lsl('tests')
+['.temp', 'MANIFEST.in', 'mySystem.dic', 'pyDAG.dic']
 
 >>> mS.replace_in_file('lslrt', 'lslrt_replaced', 'tests/.temp')
 1
@@ -120,14 +130,14 @@ def copy(file1, output_file):
     # return count
 
 
-def get_stamp(l_file):
+def get_stamp(my_file):
     """Time stamp of file"""
-    i_file = os.path.isfile(l_file)
-    if i_file:
-        d_file = os.path.getmtime(l_file)
+    is_file = os.path.isfile(my_file)
+    if is_file:
+        date_file = os.path.getmtime(my_file)
     else:
-        d_file = 0
-    return d_file
+        date_file = 0
+    return date_file
 
 
 def lslrt(path):
@@ -186,6 +196,11 @@ def cat(file1, file2, output_file):
     input2.close()
     output.close()
     return count
+
+
+def touch(fname, times=None):
+    with open(fname, 'a'):
+        os.utime(fname, times)
 
 
 if __name__ == '__main__':
