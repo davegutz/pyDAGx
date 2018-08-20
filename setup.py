@@ -71,5 +71,5 @@ setup(name='pyDAG3',
                'pyDAG3/System/pyReplace.py'],
       packages=['pyDAG3', 'pyDAG3.TextProcessing', 'pyDAG3.Dynamics', 'pyDAG3.Tables', 'pyDAG3.System',
                 'pyDAG3.Tkinter'],
-      install_requires=['Pillow', 'twine', 'wheel', 'pip', 'setuptools']
+      install_requires=['Pillow', 'twine', 'wheel', 'pip', 'setuptools', 'control', 'numpy', 'matplotlib']
       )
