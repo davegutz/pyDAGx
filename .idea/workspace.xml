@@ -90,17 +90,18 @@
     <session id="-1125382479">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.4" value="5" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.3" value="8" />
+          <entry key="project.open.time.4" value="9" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="2797" />
+          <entry key="Python Console" value="4787" />
           <entry key="dic" value="40" />
-          <entry key="py" value="2870" />
+          <entry key="py" value="6414" />
           <entry key="txt" value="226" />
         </counts>
       </usages-collector>
@@ -108,7 +109,7 @@
         <counts>
           <entry key="Dictionary" value="40" />
           <entry key="PLAIN_TEXT" value="226" />
-          <entry key="Python" value="5667" />
+          <entry key="Python" value="11201" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -117,7 +118,7 @@
           <entry key="dic" value="1" />
           <entry key="map" value="1" />
           <entry key="map2tbl" value="1" />
-          <entry key="py" value="21" />
+          <entry key="py" value="33" />
           <entry key="sar2trim" value="1" />
           <entry key="txt" value="4" />
         </counts>
@@ -126,7 +127,8 @@
         <counts>
           <entry key="Dictionary" value="1" />
           <entry key="PLAIN_TEXT" value="8" />
-          <entry key="Python" value="21" />
+          <entry key="Python" value="32" />
+          <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -136,8 +138,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="73" column="70" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="70" />
+            <state relative-caret-position="280">
+              <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -146,20 +148,40 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.txt">
+        <entry file="file://$PROJECT_DIR$/pyDAG3/Control/Servo/scratch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="604">
-              <caret line="81" selection-start-line="81" selection-end-line="81" />
+            <state relative-caret-position="283">
+              <caret line="53" column="18" lean-forward="true" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
+              <folding>
+                <marker date="1535112290100" expanded="true" signature="1197:1310" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pyDAG3/Control/Servo/servo_loop.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="e#18#40#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>find</find>
-      <find>dtamb</find>
       <find>normalconstant</find>
       <find>print(</find>
       <find>StrSet</find>
@@ -188,11 +210,10 @@
       <find>__in</find>
       <find>curve_file</find>
       <find>load(</find>
+      <find>numpy</find>
+      <find>crossover_ga_default</find>
     </findStrings>
     <replaceStrings>
-      <replace>input_file</replace>
-      <replace>arg_list</replace>
-      <replace>output_file</replace>
       <replace>input_file_name</replace>
       <replace>MY_VERSION</replace>
       <replace>__state_col</replace>
@@ -220,6 +241,9 @@
       <replace>print(</replace>
       <replace>first_third</replace>
       <replace>StringSet</replace>
+      <replace>np</replace>
+      <replace>g</replace>
+      <replace>#</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -228,11 +252,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pyDAG/Dynamics/ode.py" />
-        <option value="$PROJECT_DIR$/pyDAG/Apps/GE38_RotorDynamicModel/rotorModel.py" />
-        <option value="$PROJECT_DIR$/pyDAG/System/tests/testMySystem.py" />
-        <option value="$PROJECT_DIR$/pyDAG/System/testMySystem.py" />
-        <option value="$PROJECT_DIR$/pyDAG/System/mySystem.dic" />
         <option value="$PROJECT_DIR$/pyDAG/Apps/GE38_EngineDataReduction/eu2csv.py" />
         <option value="$PROJECT_DIR$/pyDAG/System/myReplace.py" />
         <option value="$PROJECT_DIR$/pyDAG/Apps/pyReplace" />
@@ -252,7 +271,6 @@
         <option value="$PROJECT_DIR$/pyDAG/System/pyReplace.py" />
         <option value="$PROJECT_DIR$/pyDAG3/Apps/EngineDataReduction/eu2csv.py" />
         <option value="$PROJECT_DIR$/pyDAG3/Tables/__init__.py" />
-        <option value="$PROJECT_DIR$/pyDAG3/__init__.py" />
         <option value="$PROJECT_DIR$/pyDAG3/TextProcessing/__init__.py" />
         <option value="$PROJECT_DIR$/pyDAG3/System/__init__.py" />
         <option value="$PROJECT_DIR$/pyDAG3/Dynamics/__init__.py" />
@@ -276,17 +294,38 @@
         <option value="$PROJECT_DIR$/pyDAG3/TextProcessing/tests/scratch.py" />
         <option value="$PROJECT_DIR$/pyDAG3/Apps/RotorDynamicModel/rotorModel.py" />
         <option value="$PROJECT_DIR$/pyDAG3/Apps/watermark/watermark.py" />
-        <option value="$PROJECT_DIR$/pyDAG3/System/mySystem.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/README.txt" />
+        <option value="$PROJECT_DIR$/pyDAG3/System/mySystem.py" />
+        <option value="$PROJECT_DIR$/pyDAG3/__init__.py" />
+        <option value="$PROJECT_DIR$/pyDAG3/Control/__init__.py" />
+        <option value="$PROJECT_DIR$/venv/Lib/site-packages/scilab2py/__init__.py" />
+        <option value="$PROJECT_DIR$/venv/Lib/site-packages/scilab2py/core.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/pyDAG3/Control/Servo/servo_loop.py" />
+        <option value="$PROJECT_DIR$/pyDAG3/Control/Servo/scratch.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-85" />
-    <option name="y" value="-15" />
-    <option name="width" value="1940" />
-    <option name="height" value="1100" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="2062" />
+    <option name="y" value="23" />
+    <option name="width" value="1230" />
+    <option name="height" value="846" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>RELAX NG</id>
+          </State>
+          <State>
+            <id>XML</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -306,24 +345,59 @@
             <path>
               <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
               <item name="pyDAGx" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyDAGx" type="462c0819:PsiDirectoryNode" />
               <item name="pyDAG3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
               <item name="pyDAGx" type="462c0819:PsiDirectoryNode" />
               <item name="pyDAG3" type="462c0819:PsiDirectoryNode" />
-              <item name="Apps" type="462c0819:PsiDirectoryNode" />
+              <item name="Control" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
               <item name="pyDAGx" type="462c0819:PsiDirectoryNode" />
               <item name="pyDAG3" type="462c0819:PsiDirectoryNode" />
-              <item name="System" type="462c0819:PsiDirectoryNode" />
+              <item name="Control" type="462c0819:PsiDirectoryNode" />
+              <item name="Servo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyDAGx" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyDAGx" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyDAGx" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyDAGx" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="scilab2py" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+            <path>
+              <item name="pyDAGx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
             </path>
           </expand>
           <select />
@@ -333,16 +407,17 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pyDAG3/TextProcessing/tests" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
+    <property name="last_opened_file_path" value="C:/Program Files/scilab-6.0.1/bin/libmmd.dll" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
-      <console-settings module-name="pyDAG" sdk-home="C:\Users\Dave\Documents\GitHub\pyDAGx\venv\Scripts\python.exe" working-directory="$PROJECT_DIR$/pyDAG3/TextProcessing/tests">
+      <console-settings module-name="pyDAG" sdk-home="C:\Users\Dave\Documents\GitHub\pyDAGx\venv\Scripts\python.exe" working-directory="$PROJECT_DIR$/pyDAG3/Control/Servo">
         <option name="mySdkHome" value="C:\Users\Dave\Documents\GitHub\pyDAGx\venv\Scripts\python.exe" />
         <option name="myModuleName" value="pyDAG" />
-        <option name="myWorkingDirectory" value="$PROJECT_DIR$/pyDAG3/TextProcessing/tests" />
+        <option name="myWorkingDirectory" value="$PROJECT_DIR$/pyDAG3/Control/Servo" />
       </console-settings>
     </option>
   </component>
@@ -367,7 +442,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.dist">
+  <component name="RunManager" selected="Python.scratch in Control">
     <configuration name="build" type="PythonConfigurationType" factoryName="Python">
       <module name="pyDAG" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -488,6 +563,24 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyDAG3/Apps/RotorDynamicModel/rotorModel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch in Control" type="PythonConfigurationType" factoryName="Python">
+      <module name="pyDAG" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\Dave\Documents\GitHub\pyDAGx\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyDAG3/Control/Servo" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyDAG3/Control/Servo/scratch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -663,6 +756,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.scratch in Control" />
       <item itemvalue="Python.build" />
       <item itemvalue="Python.dist" />
       <item itemvalue="Python.genGorilla" />
@@ -695,34 +789,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Doctests_in_rotorModel - 2018.08.17 at 14h 01m 00s.xml">
-      <configuration name="Doctests in rotorModel" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_watermark - 2018.08.17 at 14h 01m 06s.xml">
-      <configuration name="Doctests in watermark" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_watermark - 2018.08.17 at 14h 01m 20s.xml">
-      <configuration name="Doctests in watermark" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_watermark - 2018.08.17 at 14h 03m 27s.xml">
-      <configuration name="Doctests in watermark" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_watermark - 2018.08.17 at 14h 03m 38s.xml">
-      <configuration name="Doctests in watermark" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_watermark - 2018.08.17 at 14h 04m 46s.xml">
-      <configuration name="Doctests in watermark" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_watermark - 2018.08.17 at 14h 04m 51s.xml">
-      <configuration name="Doctests in watermark" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_mySystem - 2018.08.17 at 14h 04m 58s.xml">
+    <history-entry file="Doctests_in_mySystem - 2018.08.19 at 08h 40m 33s.xml">
       <configuration name="Doctests in mySystem" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctests_in_mySystem - 2018.08.17 at 14h 05m 53s.xml">
+    <history-entry file="Doctests_in_mySystem - 2018.08.19 at 08h 44m 34s.xml">
       <configuration name="Doctests in mySystem" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctests_in_mySystem - 2018.08.17 at 14h 06m 07s.xml">
+    <history-entry file="Doctests_in_mySystem - 2018.08.19 at 08h 44m 53s.xml">
+      <configuration name="Doctests in mySystem" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_mySystem - 2018.08.19 at 08h 45m 18s.xml">
+      <configuration name="Doctests in mySystem" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_mySystem - 2018.08.19 at 08h 45m 44s.xml">
+      <configuration name="Doctests in mySystem" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_mySystem - 2018.08.19 at 08h 46m 04s.xml">
+      <configuration name="Doctests in mySystem" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_mySystem - 2018.08.19 at 08h 48m 46s.xml">
+      <configuration name="Doctests in mySystem" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_mySystem - 2018.08.19 at 08h 56m 25s.xml">
+      <configuration name="Doctests in mySystem" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_mySystem - 2018.08.19 at 08h 56m 36s.xml">
+      <configuration name="Doctests in mySystem" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_mySystem - 2018.08.19 at 08h 56m 55s.xml">
       <configuration name="Doctests in mySystem" configurationId="tests" />
     </history-entry>
   </component>
@@ -736,10 +830,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <frame x="2062" y="23" width="1230" height="846" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22009254" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2793624" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -749,10 +843,10 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32885906" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.64295304" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.6418539" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5009914" side_tool="true" weight="0.32348993" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" weight="0.32885906" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.4966443" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.372191" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -768,27 +862,7 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pyDAG/System/mySystem.py" />
-    <entry file="file://$PROJECT_DIR$/MANIFEST.in">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="84" selection-start-line="1" selection-start-column="84" selection-end-line="1" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyDAG3/System/.r_temp" />
-    <entry file="file://$PROJECT_DIR$/pyDAG3/Apps/EngineDataReduction/c005r9951.eu" />
-    <entry file="file://$PROJECT_DIR$/pyDAG3/Apps/EngineDataReduction/eu2csv.py" />
-    <entry file="file://$PROJECT_DIR$/pyDAG3/Apps/makeCMD/StringSet.py" />
-    <entry file="file://$PROJECT_DIR$/pyDAG3/Apps/makeCMD/InFile.py" />
     <entry file="file://$PROJECT_DIR$/pyDAG3/Apps/watermark/mySystem.py" />
-    <entry file="file://$PROJECT_DIR$/pyDAG3/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pyDAG3/Tables/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -924,13 +998,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyDAG3/System/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="36" selection-start-column="36" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pyDAG3/Apps/makeCMD/map2tbl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-204" />
@@ -1001,13 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyDAG3/System/mySystem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pyDAG3/System/pyReplace.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1015,22 +1075,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pyDAG3/Control/Servo/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyDAG3/Control/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyDAG3/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyDAG3/System/mySystem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="686">
+          <caret line="59" selection-start-line="56" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyDAG3/System/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="73" column="70" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="70" />
+        <state relative-caret-position="280">
+          <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.txt">
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/scilab2py/core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
+        <state relative-caret-position="365">
+          <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/scilab2py/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
+          <folding>
+            <marker date="1534936384124" expanded="true" signature="1281:1286" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyDAG3/Control/Servo/servo_loop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#18#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyDAG3/Control/Servo/scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="53" column="18" lean-forward="true" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
+          <folding>
+            <marker date="1535112290100" expanded="true" signature="1197:1310" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
