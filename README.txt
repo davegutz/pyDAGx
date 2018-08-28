@@ -48,15 +48,18 @@ python setup.py build
 
 To build a tar.gz distribution.  The tar.gz file will be in dist folder:
 python setup.py sdist bdist bdist_wheel
+or
+Run the "dist" process in PyCharm.  Be sure to up the version in setup.py
 
 Upload for trial ****use Windows CMD for this**********
+cd Documents\GitHub\pyDAGx
 twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 uname=davegutz, pwd=Stevie18g
 
 Test
 pip install --index-url https://test.pypi.org/simple/ pyDAG3
-or for local copy
-pip install pyDAG3-3.5.3-py3-none-any.whl
+or for available local whl copy
+pip install pyDAG3-3.5.5-py3-none-any.whl
 
 
 Uninstall  ******use Window CMD for this********

@@ -20,8 +20,14 @@ True
 47
 >>> otherStrSet==testStrSet
 False
+>>> for field in testStrSet:
+...     print(field)
+Mary had a little lamb
+ it
+s was white as snow
+<BLANKLINE>
 
-Replacing:
+replacing:
 >>> numRepl = testStrSet.gsub('white', 'black')
 >>> print(numRepl)
 1
@@ -34,7 +40,7 @@ Replacing:
 <000>Mary had a little lamb; it's was white as snow|!<001>|
 
 Token details:
->>> ss =StringSet('class Error(Exception):\n', ';[]{}()!@#$%^&*-+_=`~/<>,.:\'') 
+>>> ss =StringSet('class Error(Exception):\n', ';[]{}()!@#$%^&*-+_=`~/<>,.:\'')
 >>> ss.str
 'class Error(Exception):\n'
 >>> ss
@@ -50,7 +56,7 @@ Token details:
 ['(', '):', '']
 >>> ss.reconstruct()
 'class Error(Exception):\n'
->>> ss =StringSet('[class Error(Exception):\n', ';[]{}()!@#$%^&*-+_=`~/<>,.:\'') 
+>>> ss =StringSet('[class Error(Exception):\n', ';[]{}()!@#$%^&*-+_=`~/<>,.:\'')
 >>> ss.str
 '[class Error(Exception):\n'
 >>> ss
@@ -117,6 +123,7 @@ class StringSet:
             self.delimiters = delimiters
             self.tokenize(delimiters)
             self.tokenized = 1
+        self.n_iter = 0
 
     def __len__(self):
         """String length if not tokenized, otherwise number tokens."""
@@ -140,6 +147,22 @@ class StringSet:
         else:
             result = True
         return result
+
+    def __iter__(self):
+        self.n_iter = 0
+        return self
+
+    def __next__(self):
+        """Enable iteration"""
+        if self.n_iter < self.size_tokens:
+            if self.tokenized:
+                result = self.tokens[self.n_iter]
+            else:
+                result = self.str
+            self.n_iter += 1
+            return result
+        else:
+            raise StopIteration
 
     def __repr__(self):
         """Print the class"""
@@ -207,7 +230,7 @@ class StringSet:
     def token(self, i, verbose=True):
         """Use __getitem__ instead"""
         if verbose:
-            print("Deprecated.   Use ''[]'' instead")
+            print("(", __name__, "):  token() deprecated.   Use ''[]'' instead")
         return self.tokens[i]
 
     def __getitem__(self, i):

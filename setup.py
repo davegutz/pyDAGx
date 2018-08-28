@@ -2,11 +2,11 @@ import setuptools
 from distutils.core import setup
 
 setup(name='pyDAG3',
-      version='3.5.3',
+      version='3.5.5',
       author='Dave Gutz',
       author_email='davegutz@alum.mit.edu',
       url='http://www.google.com',
-      description='First Release Dave Gutz Python 3 port (need to try Linux)',
+      description='First Release Dave Gutz Python 3 port (need to try Linux).  Iterators for InFile and StringSet',
       long_description=None,
       license=None,
       platforms='OS Independent',

@@ -2,7 +2,7 @@
 r""" Input file module, parse and manipulate input files
 
 Tests:
->>> from pyDAG3.TextProcessing.InFile import InFile
+>>> from InFile import InFile
 >>> tf = open('temp', 'w')
 >>> text = "This is the first line.\n\nThis is the third line.\nThis is the fourth line.\nThis may be a line.\n"
 >>> tf.write(text)
@@ -33,6 +33,8 @@ Modify it
 1
 >>> infile.num_lines
 4
+>>> len(infile)
+4
 >>> infile
 asTemp (4 lines):
 0:This is the first line.
@@ -40,6 +42,13 @@ asTemp (4 lines):
 2:This is the fourth line.
 3:This may be a line.
 <BLANKLINE>
+
+>>> for line in infile:
+...    print(line, end='')
+This is the first line.
+This is the third line.
+This is the fourth line.
+This may be a line.
 
 >>> infile.load_vars()
 16
@@ -69,7 +78,7 @@ asTemp (4 lines):
 >>> infile.line(firstThird)
 'This may be a line.\n'
 
->>> infile.token(firstThird, 0)
+>>> infile[firstThird][0]
 'This may be a line'
 
 >>> infile.max_line_length()
@@ -228,6 +237,7 @@ class InFile:
         self.max_line_tokens = 0  # stored value of maximum line length, in tokens
         self.counted = 0  # whether maximum line length is counted
         self.loaded = 0   # whether readlines already run on self.f
+        self.n_iter = 0  # iteration counter
 
     def __repr__(self):
         """Print the class"""
@@ -248,11 +258,14 @@ class InFile:
     def line_set(self, i):
         """Return the tokenized representation of line i, always in range"""
         # Check input
-        if __debug__:
-            if not self.tokenized:
-                raise InputError("", "must run InFile.tokenize before look in InFile.line_set")
+        # if __debug__:
+        #     if not self.tokenized:
+        #         raise InputError("", "must run InFile.tokenize before look in InFile.line_set")
         limited_index = max(min(i, len(self.v_set)-1), 0)
-        return self.v_set[limited_index]
+        if self.tokenized:
+            return self.v_set[limited_index]
+        else:
+            return self.line(limited_index)
 
     def add_line(self, after_line, new_line_str):
         """Insert line of string new_line_str after line after_line"""
@@ -339,6 +352,10 @@ class InFile:
             for i in range(start_line, end_line):
                 count += self.v_set[i].glob_sub_delims(target, replace)
         return count
+
+    def __len__(self):
+        """The number of lines"""
+        return self.num_lines
 
     def load(self, quiet=True):
         """Load the file"""
@@ -489,12 +506,34 @@ class InFile:
                 self.lines[i] = self.lines[i].split(comment_delim)[0] + last_char
         return num_comment_str
 
-    def token(self, i, j):
+    def token(self, i, j, verbose=True):
         """Return token at specified location"""
+        if verbose:
+            print("(", __name__, "):  token() deprecated.   Use ''[]'' instead")
         if 0 > i or 0 > j:
             return ""
         else:
             return self.line_set(i)[j]
+
+    def __getitem__(self, i):
+        """Return an element"""
+        return self.line_set(i)
+
+    def __iter__(self):
+        self.n_iter = 0
+        return self
+
+    def __next__(self):
+        """Enable iteration"""
+        if self.n_iter < self.num_lines:
+            if self.tokenized:
+                result = self.line_set(self.n_iter)
+            else:
+                result = self.line(self.n_iter)
+            self.n_iter += 1
+            return result
+        else:
+            raise StopIteration
 
     def tokenize(self, delimiters):
         """Tokenize each line of file into a StringSet.  Return total number of tokens"""
