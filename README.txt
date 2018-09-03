@@ -65,7 +65,7 @@ pip install pyDAG3-3.5.5-py3-none-any.whl
 Uninstall  ******use Window CMD for this********
 pip uninstall pyDAG3
 or
-python -m pip uninstall pyDAG3-3.5.3-py3-none-any.whl
+python -m pip uninstall pyDAG3-3.5.5-py3-none-any.whl
 
 
 Version number goes into setup.py
