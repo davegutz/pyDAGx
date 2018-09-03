@@ -252,7 +252,8 @@ class InFile:
 
     def line(self, i):
         """Return the line string demanded but always in-range"""
-        limited_index = max(min(i, len(self.lines)-1), 0)
+        # limited_index = max(min(i, len(self.lines)-1), 0)
+        limited_index = i
         return '%(line)s' % {'line': self.lines[limited_index]}
 
     def line_set(self, i):
@@ -261,7 +262,8 @@ class InFile:
         # if __debug__:
         #     if not self.tokenized:
         #         raise InputError("", "must run InFile.tokenize before look in InFile.line_set")
-        limited_index = max(min(i, len(self.v_set)-1), 0)
+        # limited_index = max(min(i, len(self.v_set)-1), 0)
+        limited_index = i
         if self.tokenized:
             return self.v_set[limited_index]
         else:
