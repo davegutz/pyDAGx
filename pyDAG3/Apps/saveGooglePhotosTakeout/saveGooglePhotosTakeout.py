@@ -19,13 +19,17 @@ Move Google Photos Takeout data into target folder, checking to make sure no ove
 # Run for 2016-2018 with folders names yyyy-
 #   saveGooglePhotosTakeout.py -i "C:\Users\Dave\Downloads\takeout-20180907T151536Z\Takeout\Google Photos" \
 #   -o "D:\Pictures\Saved Pictures\KPGUTZ_2016" -d1
-#
-# Run for r2015 with folder named -yyyy, first to extract from folders in output
+
+# Run for 2015 with folder named -yyyy, first to extract from folders in output
 #   saveGooglePhotosTakeout.py -i "D:\Pictures\Saved Pictures\KPGUTZ_2015" \
 #   -o "D:\Pictures\Saved Pictures\KPGUTZ_2015" -d1 -r
 # then
 #   saveGooglePhotosTakeout.py -i "C:\Users\Dave\Downloads\takeout-20180907T151536Z\Takeout\Google Photos" \
 #   -o "D:\Pictures\Saved Pictures\KPGUTZ_2015" -d1
+
+# Run for 2014 with folder named -yyyy, first to extract folders in output
+#   saveGooglePhotosTakeout.py -i "D:\Pictures\Saved Pictures\KPGUTZ_2014_raw" \
+#   -o "D:\Pictures\Saved Pictures\KPGUTZ_2014" -d1 -r
 
 # import cProfile
 import getopt

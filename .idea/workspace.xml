@@ -90,20 +90,20 @@
     <session id="-1125382479">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="23" />
-          <entry key="project.open.time.0" value="4" />
+          <entry key="project.closed" value="25" />
+          <entry key="project.open.time.0" value="5" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.3" value="9" />
           <entry key="project.open.time.4" value="12" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="27" />
+          <entry key="project.opened" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="4787" />
+          <entry key="Python Console" value="4815" />
           <entry key="dic" value="40" />
-          <entry key="py" value="7300" />
+          <entry key="py" value="7746" />
           <entry key="txt" value="354" />
         </counts>
       </usages-collector>
@@ -111,7 +111,7 @@
         <counts>
           <entry key="Dictionary" value="40" />
           <entry key="PLAIN_TEXT" value="354" />
-          <entry key="Python" value="12087" />
+          <entry key="Python" value="12561" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -120,7 +120,7 @@
           <entry key="dic" value="1" />
           <entry key="map" value="1" />
           <entry key="map2tbl" value="1" />
-          <entry key="py" value="48" />
+          <entry key="py" value="49" />
           <entry key="sar2trim" value="1" />
           <entry key="txt" value="5" />
         </counts>
@@ -129,7 +129,7 @@
         <counts>
           <entry key="Dictionary" value="1" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="47" />
+          <entry key="Python" value="48" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
@@ -140,8 +140,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="70" column="43" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+            <state relative-caret-position="325">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -152,11 +152,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout/saveGooglePhotosTakeout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-460">
-              <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-              <folding>
-                <element signature="e#1105#1118#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-749">
+              <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout/swapUnderscores.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="54" column="51" lean-forward="true" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -164,7 +170,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pyDAG3/System/mySystem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
+            <state relative-caret-position="3366">
               <caret line="200" selection-start-line="200" selection-end-line="203" />
             </state>
           </provider>
@@ -251,7 +257,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pyDAG/System/myReplace.py" />
         <option value="$PROJECT_DIR$/pyDAG/Apps/pyReplace" />
         <option value="$PROJECT_DIR$/pyDAG/Apps/makeCMD/makeCMD.py" />
         <option value="$PROJECT_DIR$/pyDAG.dic" />
@@ -301,15 +306,16 @@
         <option value="$PROJECT_DIR$/README.txt" />
         <option value="$PROJECT_DIR$/pyDAG3/TextProcessing/InFile.py" />
         <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout/swapUnderscores.py" />
         <option value="$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout/saveGooglePhotosTakeout.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="401" />
-    <option name="y" value="5" />
-    <option name="width" value="1940" />
-    <option name="height" value="1100" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -387,7 +393,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout/saveGooglePhotosTakeout.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout/swapUnderscores.py" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -561,7 +567,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout/saveGooglePhotosTakeout.py" />
-      <option name="PARAMETERS" value="-i &quot;C:\Users\Dave\Downloads\takeout-20180907T151536Z-003&quot; -o &quot;D:\Pictures\Saved Pictures\KPGUTZ_2018&quot;" />
+      <option name="PARAMETERS" value="-i &quot;D:\Pictures\Saved Pictures\KPGUTZ_2014_raw&quot;   -o &quot;D:\Pictures\Saved Pictures\KPGUTZ_2014&quot; -d1 -r" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -605,6 +611,27 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyDAG3/Control/Servo/scratch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="swapUnderscores" type="PythonConfigurationType" factoryName="Python">
+      <module name="pyDAG" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Dave\Documents\GitHub\pyDAGx\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout/swapUnderscores.py" />
+      <option name="PARAMETERS" value="-f &quot;D:\Pictures\Saved Pictures\KPGUTZ_2014_raw&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -784,6 +811,7 @@
       <item itemvalue="Python.build" />
       <item itemvalue="Python.dist" />
       <item itemvalue="Python.saveGooglePhotosTakeout" />
+      <item itemvalue="Python.swapUnderscores" />
       <item itemvalue="Python.genGorilla" />
       <item itemvalue="Python.makeCMD" />
       <item itemvalue="Python.rotorModel" />
@@ -855,15 +883,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="321" y="4" width="1552" height="880" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21980198" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22009254" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3261745" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4990086" visible="true" weight="0.38554215" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4990086" weight="0.3852349" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5394933" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -871,7 +898,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.6418539" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5009914" side_tool="true" weight="0.32348993" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" weight="0.32885906" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.48713234" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.48590603" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -887,13 +914,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitattributes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="73">
@@ -1163,28 +1183,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pyDAG3/System/mySystem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
+        <state relative-caret-position="3366">
           <caret line="200" selection-start-line="200" selection-end-line="203" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="70" column="43" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+        <state relative-caret-position="325">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout/swapUnderscores.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="54" column="51" lean-forward="true" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pyDAG3/Apps/saveGooglePhotosTakeout/saveGooglePhotosTakeout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-460">
-          <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-          <folding>
-            <element signature="e#1105#1118#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-749">
+          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
         </state>
       </provider>
     </entry>
